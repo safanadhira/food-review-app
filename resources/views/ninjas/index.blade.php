@@ -8,16 +8,18 @@
     <h2> Ninjas Page </h2>
     <p> {{ $greetings }} </p>
 
+    @if($greetings == "Hello Ninjas")
+        <p> We have some ninjas here! (from the if statement) </p>
+    @endif
+
     <ul>
-        <li>List of Ninjas:
-        <a href="">
-            {{ $ninjas[0]['name'] }}
-        </a>
-        </li>
-        <li>List of Ninjas:
-        <a href="">
-            {{ $ninjas[1]['name'] }}
-        </a>
-        </li>
+        @foreach($ninjas as $ninja)
+            <li> 
+                <p>{{ $ninja['name'] }}</p>
+                <a href="/ninjas/{{ $ninja['id']}}">View Details</a>
+            </li>
+        @endforeach
+    </ul>
+    <a href="/"> Back to Home Page </a>
 </body>
 </html>
