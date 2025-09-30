@@ -15,10 +15,10 @@
       <a href="/">
         Homepage
       </a>
-      <a href="/ninjas"> 
+      <a href="{{ route('ninjas.index') }}"> 
         All Ninjas
       </a>
-      <a href="/ninjas/create">
+      <a href="{{ route('ninjas.create') }}">
         Create New Ninja
       </a>
     </nav>
