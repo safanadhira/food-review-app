@@ -15,10 +15,9 @@ class NinjaController extends Controller
         return view('ninjas.index', ['ninjas' => $ninjas]);
     }
 
-    public function show($id) {
-        $ninja = Ninja::with('dojo')->findOrFail($id);
-        
-        return view('ninjas.show', ['ninja' => $ninja]);
+    public function show(Ninja $ninja) {
+      $ninja->load('dojo');
+      return view('ninjas.show', ['ninja' => $ninja]);
     }
 
     public function create() {
@@ -37,15 +36,13 @@ class NinjaController extends Controller
       ]);
 
       Ninja::create($validated);
-      return redirect()->route('ninjas.index');
+      return redirect()->route('ninjas.index')->with('success', 'Ninja created successfully.');
 
     }
 
-    public function destroy($id) {
-      // --> /ninjas/{id} (DELETE)
-      // handle delete request to delete a ninja record from table
-    }
+    public function destroy(Ninja $ninja) {
+      $ninja->delete();
 
-    // edit() and update() for edit view and update requests
-    // we won't be using these routes
+      return redirect()->route('ninjas.index')->with('success', 'Ninja deleted successfully.');
+    }
 }
