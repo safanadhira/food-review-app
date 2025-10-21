@@ -1,34 +1,27 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .w-5, .h-5 {
-        width: 1rem !important;
-        height: 1rem !important;
-    }
+    width: 1rem !important;
+    height: 1rem !important;
+}
 
 @layer base {
     body {
-        background-color: #f3f4f6;
+        background-color: #976a6aff; /* black background */
         font-family: "Rubik", ui-sans-serif, system-ui, sans-serif;
-        color: #374151;
+        color: #fff; /* white text */
     }
-    h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #ef4444;
-    }
-    h2 {
-        font-size: 1.25rem;
+    h1, h2, h3 {
+        color: #fff;
         font-weight: 700;
         margin: 1rem 0;
     }
-    h3 {
-        font-size: 1.125rem;
-        font-weight: 700;
-        margin: 1rem 0;
-    }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.125rem; }
+
     ul {
         margin: 2.5rem 0;
     }
@@ -40,9 +33,10 @@
 @layer components {
     /* header */
     header {
-        background-color: white;
+        background-color: #472e2eff; /* dark header */
+        color: #fff;
     }
-    
+
     header nav {
         display: flex;
         align-items: center;
@@ -51,22 +45,26 @@
         padding: 1rem 3rem;
         margin: 0 auto;
     }
-    
+
     header h1 {
         margin-right: auto;
+        color: #fff;
     }
-    
+
     /* form elements */
     form {
         max-width: 640px;
     }
-    
+
     input, select, textarea {
         display: block;
         width: 100%;
         margin-top: 0.5rem;
         margin-bottom: 1rem;
         padding: 0.5rem;
+        background-color: #ffffffff; /* dark input */
+        color: #fff;
+        border: 1px solid #472e2eff;
     }
 
     /* Custom classes */
@@ -75,31 +73,33 @@
         margin: 0 auto;
         padding: 2rem 3rem;
     }
-    
+
     .card {
-        background-color: white;
+        background-color: #472e2eff;
         border-radius: 0.375rem;
-        border: 1px solid #e5e7eb;
+        border: 1px solid #ffffffff;
         padding: 0.75rem;
         margin: 0.5rem 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: #ffffffff;
     }
-    
+
     .highlight {
-        border-left: 4px solid #ef4444;
+        border-left: 4px solid #fff;
     }
-    
+
     .btn {
         border-radius: 0.375rem;
         padding: 0.5rem 0.75rem;
-        background-color: #e5e7eb;
+        background-color: #fff;
+        color: #472e2eff;
         transition: all 0.2s;
     }
-    
+
     .btn:hover {
-        background-color: #ef4444;
-        color: white;
+        background-color: #472e2eff;
+        color: #ffffffff;
     }
 }

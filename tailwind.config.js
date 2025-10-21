@@ -5,7 +5,13 @@ export default {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: '#000000',
+        foreground: '#ffffff',
+        accent: '#888888',
+      },
+    },
   },
   plugins: [],
 }
