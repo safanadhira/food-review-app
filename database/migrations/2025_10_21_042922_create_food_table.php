@@ -11,20 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dojos', function (Blueprint $table) {
+        Schema::create('foods', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
-            $table->text('description');
-            $table->string('location');
+            $table->decimal('price', 8, 2);
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
+            //$table->string('restaurant_name')->nullable();
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('dojos');
+        Schema::dropIfExists('foods');
     }
 };

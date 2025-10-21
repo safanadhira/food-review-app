@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            DojoSeeder::class,
-            NinjaSeeder::class,
+            RestaurantSeeder::class,
+            FoodSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

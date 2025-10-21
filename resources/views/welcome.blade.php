@@ -7,11 +7,11 @@
   @vite('resources/css/app.css')
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen text-center">
-  <h1>Welcome to My Website!</h1>
-  <p>I have some Ninjas! Click the button below.</p>
+  <h1>Welcome!</h1>
+  <p>Discover delicious dishes and share your thoughts.</p>
   
-  <a href="/ninjas" class="btn mt-4 inline-block">
-    Find Ninjas!
+  <a href="/foods" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+    Start
   </a>
 </body>
 </html>
