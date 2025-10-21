@@ -10,8 +10,7 @@
   <h1>Welcome!</h1>
   <p>Discover delicious dishes and share your thoughts.</p>
   
-  <a href="/foods" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-    Start
+  <a href="{{ route('restaurants.index') }}" class="btn">Start</a>
   </a>
 </body>
 </html>

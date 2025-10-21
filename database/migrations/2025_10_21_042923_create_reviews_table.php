@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('food_id')->constrained('foods');
-            $table->string('reviewer_name');
-            $table->text('comment')->nullable();
+            $table->string('reviewer_name')->nullable();
+            $table->text('comment');
             $table->tinyInteger('rating')->unsigned();
             $table->timestamps();
         });

@@ -11,9 +11,10 @@ class ReviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Food $food)
     {
-        //
+        $reviews = $food->reviews()->latest()->get();
+        return view('reviews.index', compact('food', 'reviews'));
     }
 
     /**
@@ -36,17 +37,17 @@ class ReviewController extends Controller
             'rating' => 'required|integer|min:1|max:5',
         ]);
 
-        Review::create($request->only([
-            'food_id',
-            'reviewer_name',
-            'comment',
-            'rating',
-        ]));
+        Review::create([
+            'food_id' => $request->input('food_id'),
+            'reviewer_name' => $request->input('reviewer_name'),
+            'comment' => $request->input('comment'),
+            'rating' => $request->input('rating'),
+        ]);
 
         $food = Food::find($request->food_id);
 
-        return redirect()->route('restaurants.show', $food->restaurant_name)
-                        ->with('success', 'Review added!');
+        return redirect()->route('reviews.index', ['food' => $request->food_id])
+                        ->with('success', 'Review submitted!');
     }
 
     /**
@@ -76,8 +77,13 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Review $review)
     {
-        //
+        $food = $review->food; // ambil makanan biar bisa redirect balik
+        $review->delete();
+
+        return redirect()->route('reviews.index', ['food' => $food->id])
+                        ->with('success', 'Review deleted!');
     }
+
 }

@@ -63,7 +63,7 @@
         margin-bottom: 1rem;
         padding: 0.5rem;
         background-color: #ffffffff; /* dark input */
-        color: #fff;
+        color: #000000ff;
         border: 1px solid #472e2eff;
     }
 
@@ -102,4 +102,56 @@
         background-color: #472e2eff;
         color: #ffffffff;
     }
+
+    .card h4 {
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+
+    .card p {
+        margin-bottom: 0.5rem;
+    }
+
+    .card small {
+        color: #6b7280; /* abu-abu Tailwind */
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #fff;
+        color: #6b2e2e;
+        border: 1px solid #6b2e2e;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .btn:hover {
+        background-color: #6b2e2e;
+        color: #fff;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #fff;
+        color: #6b2e2e;
+        border: 1px solid #6b2e2e;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .btn:hover {
+        background-color: #6b2e2e;
+        color: #fff;
+    }
+
+    .card:hover {
+        background-color: #976a6aff;
+        cursor: pointer;
+    }
+
 }

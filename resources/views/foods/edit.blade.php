@@ -11,7 +11,7 @@
         <label for="name">Name</label>
         <input type="text" name="name" value="{{ old('name', $food->name) }}" required>
 
-        <label for="description">Description</label>
+        <label for="description">Review</label>
         <textarea name="description">{{ old('description', $food->description) }}</textarea>
 
         <label for="price">Price</label>

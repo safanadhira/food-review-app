@@ -9,8 +9,6 @@
     <header>
         <nav>
             <h1><a href="/">🍽️ Food Review</a></h1>
-            <a href="/foods">Foods</a>
-            <a href="/restaurants">Restaurants</a> <!-- 👈 Updated link -->
         </nav>
     </header>
 

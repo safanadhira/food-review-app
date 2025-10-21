@@ -47,32 +47,38 @@ class RestaurantController extends Controller
     public function show($name)
     {
         $restaurant = Restaurant::where('name', $name)->firstOrFail();
-        $foods = Food::where('restaurant_name', $name)->orderBy('name')->get();
+        $restaurant->load('foods');
 
-        return view('restaurants.show', compact('restaurant', 'foods'));
+        return view('restaurants.show', compact('restaurant'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.edit', compact('restaurant'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $restaurant->update($request->only(['name', 'description']));
+
+        return redirect()->route('restaurants.index')->with('success', 'Restaurant updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route('restaurants.index')->with('success', 'Restaurant deleted!');
     }
 }

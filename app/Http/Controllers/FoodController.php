@@ -14,35 +14,28 @@ class FoodController extends Controller
         return view('foods.index', compact('foods'));
     }
 
-    public function create()
+    public function create(Restaurant $restaurant)
     {
-        $restaurants = \App\Models\Restaurant::all();
-        return view('foods.create', compact('restaurants'));
+        return view('foods.create', compact('restaurant'));
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Restaurant $restaurant)
     {
         $request->validate([
             'name' => 'required|string',
             'price' => 'required|numeric',
-            'restaurant_name' => 'required|string',
+            'description' => 'nullable|string',
         ]);
 
-        $restaurant = Restaurant::firstOrCreate(['name' => $request->restaurant_name]);
-
-        if (! $restaurant) {
-            return back()->withErrors(['restaurant_name' => 'Restaurant not found.'])->withInput();
-        }
-
-        Food::create([
+        $restaurant->foods()->create([
             'name' => $request->name,
             'price' => $request->price,
-            'restaurant_id' => $restaurant->id,
             'description' => $request->description,
         ]);
 
-        return redirect()->route('foods.index')->with('success', 'Food added!');
+        return redirect()->route('restaurants.show', ['name' => $restaurant->name])
+                        ->with('success', 'Food added!');
     }
 
 
@@ -79,7 +72,10 @@ class FoodController extends Controller
 
     public function destroy(Food $food)
     {
+        $restaurant = $food->restaurant;
         $food->delete();
-        return redirect()->route('foods.index');
+
+        return redirect()->route('restaurants.show', ['name' => $restaurant->name])
+                        ->with('success', 'Food deleted!');
     }
 }
